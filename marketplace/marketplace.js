@@ -8,7 +8,7 @@ const itemsData = {
     { name: "Apartment", price: 50000 },
     { name: "Townhouse", price: 150000 },
     { name: "Villa", price: 500000 }
-  
+  ]
 };
 
 // Load category items

@@ -4,8 +4,8 @@
     "version": "1.0",
     "description": "A game-like extension where you earn and upgrade your income!",
     "icons": {
-      "48": "icons/icon-48.png",
-      "96": "icons/icon-96.png"
+      "48": "icon/icon-48.png",
+      "96": "icon/icon-96.png"
     },
     "permissions": [
       "storage"
