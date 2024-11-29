@@ -1,7 +1,7 @@
 // Default game state
 const defaultState = {
-    money: 0,
-    income: 1999,
+    money: 100000,
+    income: 1,
     nextIncome: 2,
     upgradeCost: 10
   };

@@ -2,13 +2,13 @@ const itemsData = {
   cars: [
     { name: "Toyota Corolla", price: 20000 },
     { name: "Honda Civic", price: 25000 },
-    { name: "Tesla Model 3", price: 40000 }
+    { name: "Toyota highlander", price: 40000 }
   ],
   houses: [
-    { name: "Small Apartment", price: 50000 },
-    { name: "Family Home", price: 150000 },
-    { name: "Luxury Villa", price: 500000 }
-  ]
+    { name: "Apartment", price: 50000 },
+    { name: "Townhouse", price: 150000 },
+    { name: "Villa", price: 500000 }
+  
 };
 
 // Load category items
@@ -40,26 +40,55 @@ function loadItems(category) {
       buyItem(itemName, itemPrice);
     });
   });
-}
+ }
 
-// Buy item logic
+
+ // Buy item logic
 function buyItem(name, price) {
   browser.storage.local.get("gameState").then((data) => {
-    const gameState = data.gameState || {};
-    if (gameState.money >= price) {
-      gameState.money -= price;
-      gameState.purchasedItems = gameState.purchasedItems || [];
-      gameState.purchasedItems.push({ name, price });
+    const gameState = data.gameState || {}; // Fetch existing game state
+    
+    // Ensure the money is enough for the purchase
+    if (gameState.money > price) {
+      // Deduct money from the user
+      gameState.money = gameState.Sate - price;
+      
+      // Add the purchased item to the user's collection
+      gameState.purchasedItems = gameState.purchasedItems || []; // Initialize the collection if it doesn't exist
+      gameState.purchasedItems.push({ name, price }); // Add the purchased item to the collection
+
+      // Update the game state and save it
       browser.storage.local.set({ gameState });
+
+      // Show a success message
       alert(`You bought ${name}!`);
     } else {
-      alert("Not enough money!");
+      // Show an alert if the user doesn't have enough money
+      alert("You don't have enough money!");
     }
   });
 }
 
-// Back to popup
-document.getElementById("back").addEventListener("click", () => {
+
+ //// Buy item logic
+ //function buyItem(name, price) {
+ //  browser.storage.local.get("gameState").then((data) => {
+ //    const gameState = data.gameState || {};
+ //    if (gameState.money >= price) {
+ //      gameState.money -= price;
+ //      gameState.purchasedItems = gameState.purchasedItems || [];
+ //      gameState.purchasedItems.push({ name, price });
+ //      browser.storage.local.set({ gameState });
+ //      alert(`You bought ${name}!`);
+ //    } else {
+ //      alert("Not enough money!");
+ //    }
+ //  });
+ //}
+
+
+ // Back to popup
+ document.getElementById("back").addEventListener("click", () => {
   window.close();
 });
 
