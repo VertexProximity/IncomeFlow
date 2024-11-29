@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+    "name": "Progressive Income Game",
+    "version": "1.0",
+    "description": "A game-like extension where you earn and upgrade your income!",
+    "icons": {
+      "48": "icons/icon-48.png",
+      "96": "icons/icon-96.png"
+    },
+    "permissions": [
+      "storage"
+    ],
+    "browser_action": {
+      "default_icon": "icon/icon-48.png",
+      "default_popup": "popup/popup.html",
+      "default_title": "Click to Earn!"
+    }
+  }
+  
